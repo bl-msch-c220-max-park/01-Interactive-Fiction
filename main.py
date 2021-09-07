@@ -17,8 +17,8 @@ space = {
       "text": "You are at Space Headquaters. Your objective today is to find the infamous space robber throughout the space city. Where would you like to go? \n\n[[Jupiter Bar]]\n[[Cadet Cafe]]\n[[Astronomy Night Club]]\n[[Moonstar Hotel]]",
       "links": [
         {
-          "linkText": "JUPITERBAR",
-          "passageName": "JUPITERBAR",
+          "linkText": "Jupiter BAR",
+          "passageName": "Jupiter BAR",
           "original": "[[Jupiter Bar]]"
         },
         {
@@ -304,24 +304,26 @@ def find_current_location(location_label):
 
 # ----------------------------------------------------------------
 
-def render(current_location):
-	print("You are at the " + current_location ["name"])
-	print(current_location["cleanText"])
-	
+def render(current_location, score, moves):
+  if "name" in current_location and "cleanText" in current_location:
+			#print("Moves: " + str(moves) + ", Score: " + str(score))
+			print("Moves: {}, Score: {}".format(moves, score))
+			print("You are at the " + str(current_location["name"]))
+			print(current_location["cleanText"] + "\n")
+
 def get_input():
-	response = input("What do you want to do ")
+	response = input("What do you want to do? ")
 	response = response.upper().strip()
 	return response
 
 def update(current_location, location_label, response):
 	if response == "":
 		return location_label
-
-	for link in current_location["links"]:
-		if link["linkText"] == response:
-			return link["passageName"]
-			
-	print("I didn't understand that. Please try again. ")
+	if "links" in current_location:
+		for link in current_location["links"]:
+			if link["linkText"] == response:
+				return link["passageName"]
+	print("I don't understand what you are trying to do. Try again.")
 	return location_label
 
 
@@ -330,13 +332,18 @@ def update(current_location, location_label, response):
 location_label = "Headquarters"
 current_location = {}
 response = ""
+score = 0
+moves = 0
 
 while True:
 	if response == "QUIT":
 		break
+	moves += 1
 	location_label = update(current_location, location_label, response)
 	current_location = find_current_location(location_label)
-	render(current_location)
+	if "score" in current_location:
+		score = score + current_location["score"]
+	render(current_location, score, moves)
 	response = get_input()
 
 
