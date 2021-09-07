@@ -17,8 +17,8 @@ space = {
       "text": "You are at Space Headquaters. Your objective today is to find the infamous space robber throughout the space city. Where would you like to go? \n\n[[Jupiter Bar]]\n[[Cadet Cafe]]\n[[Astronomy Night Club]]\n[[Moonstar Hotel]]",
       "links": [
         {
-          "linkText": "Jupiter BAR",
-          "passageName": "Jupiter BAR",
+          "linkText": "Jupiter Bar",
+          "passageName": "Jupiter Bar",
           "original": "[[Jupiter Bar]]"
         },
         {
@@ -306,7 +306,6 @@ def find_current_location(location_label):
 
 def render(current_location, score, moves):
   if "name" in current_location and "cleanText" in current_location:
-			#print("Moves: " + str(moves) + ", Score: " + str(score))
 			print("Moves: {}, Score: {}".format(moves, score))
 			print("You are at the " + str(current_location["name"]))
 			print(current_location["cleanText"] + "\n")
