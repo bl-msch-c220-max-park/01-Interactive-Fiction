@@ -320,7 +320,7 @@ def update(current_location, location_label, response):
 		return location_label
 	if "links" in current_location:
 		for link in current_location["links"]:
-			if link["linkText"] == response:
+			if link["linkText"].upper() == response:
 				return link["passageName"]
 	print("I don't understand what you are trying to do. Try again.")
 	return location_label
