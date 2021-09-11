@@ -318,7 +318,7 @@ passages_welcome ={
     "saturn pharamcy" : "The pharmacist said he stole all their money and left. You might be close on the space robber's tail.", 
     "astro library" : "Welcome to the city's library. But its empty. The space robber must of been here but nowhere in sight.", 
     "rocket gas station" : "The Gas station owner said the robber just left and you can catch him if you're fast enough! GO!.", 
-    "houston headquarters" : "You found him! With all his stolen goods. Great Job! Think you can find him faster?", 
+    "nasa garage" : "You found him! With all his stolen goods. Great Job! Think you can find him faster?", 
  }
 
 passages_scores = {
@@ -332,7 +332,7 @@ passages_scores = {
     "saturn pharamcy" : 1,
     "astro library" : 1,
     "rocket gas station" : 1,
-    "houston headquarters" : 1,
+    "nasa garage" : 1,
  }
 
 #inputs
@@ -364,7 +364,7 @@ while True:
         print(f'{passages_welcome[curr_location]}\n')
 
         #if houstan reached, prompt 'play again' or 'quit'
-        if curr_location == "houston headquarters":
+        if curr_location == "nasa garage":
             response = input("Found robber, play again or quit? ")
             response = response.lower().strip()
             #prompt options after game
@@ -390,66 +390,3 @@ while True:
 print("Thanks for playing!")
 
 
-
-
-
-
-
-
-# # ----------------------------------------------------------------
-# def find_current_location(location_label):
-#   if "passages" in space:
-#     for passage in space["passages"]:
-#       if location_label == passage["name"]:
-#         return passage
-#   return {}
-
-# # ----------------------------------------------------------------
-
-# def render(current_location, score, moves):
-#   if "name" in current_location and "cleanText" in current_location:
-#       print("Moves: {}, Score: {}".format(moves, score))
-#       print("You are at the " + str(current_location["name"]))
-#       print(current_location["cleanText"] + "\n")
-
-# #inputs
-# def get_input():
-#   response = input("What do you want to do? ")
-#   response = response.strip()
-#   print(f'response: {response}')
-#   return response
-
-# def update(current_location, location_label, response):
-#   if response == "":
-#     return location_label
-#   #curr_location is empty dictionary
-#   if "links" in current_location:
-#     for link in current_location["links"]:
-#       if link["linkText"] == response:
-#         return link["passageName"]
-#   print("I don't understand what you are trying to do. Try again.")
-#   return location_label
-
-
-# # ----------------------------------------------------------------
-
-# location_label = "Headquarters"
-# current_location = {}
-# response = ""
-# score = 0
-# moves = 0
-
-# while True:
-#   if response == "QUIT":
-#     break
-#   response = get_input()
-#   moves += 1
-#   location_label = update(current_location, location_label, response)
-#   current_location = find_current_location(location_label)
-#   if "score" in current_location:
-#     score = score + current_location["score"]
-#   render(current_location, score, moves)
-
-
-
-# print("Thanks for playing!")
